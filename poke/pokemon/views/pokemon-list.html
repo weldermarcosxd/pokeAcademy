@@ -1,0 +1,31 @@
+<div class="pokemon-pokemonRead">
+    <div class="page-header row">
+        <div class="col-md-7">
+            <h2>
+                Pokemon pokemonRead <small>pokemonReadController</small>
+            </h2>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group has-feedback">
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="search" placeholder="search" ng-model="user.name">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <a class="btn btn-submit" href="#/pokemon/create">CREATE</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="user in pokemonRead.pokemon | filter:user as results">
+            <div class="thumbnail">
+                <h1>{{user.name}}</h1>
+                <img style="border-radius: 40%;height:200px;" data-ng-src="https://img.pokemondb.net/artwork/{{user.name.toLowerCase()}}.jpg" class="img-circle">
+                <div class="col-12">
+                    <h2>{{user.types[0]}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

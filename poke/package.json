@@ -1,0 +1,14 @@
+{
+  "name": "poke",
+  "version": "0.0.1",
+  "description": "poke client",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "weldermarcosxd@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}
