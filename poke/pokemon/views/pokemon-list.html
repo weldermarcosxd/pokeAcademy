@@ -8,7 +8,7 @@
         <div class="col-md-4">
             <div class="form-group has-feedback">
                 <label for="search" class="sr-only">Search</label>
-                <input type="text" class="form-control" name="search" placeholder="search" ng-model="user.name">
+                <input type="text" class="form-control" name="search" placeholder="search" data-ng-model="user">
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
         </div>
@@ -18,12 +18,12 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6 col-md-4" data-ng-repeat="user in pokemonRead.pokemon | filter:user as results">
+        <div class="col-sm-6 col-md-4" data-ng-repeat="user in pokemonRead.pokemon | limitTo:50 | filter:user as results ">
             <div class="thumbnail">
                 <h1>{{user.name}}</h1>
-                <img style="border-radius: 40%;height:200px;" data-ng-src="https://img.pokemondb.net/artwork/{{user.name.toLowerCase()}}.jpg" class="img-circle">
+                <img style="border-radius: 40%;height:200px;" data-ng-src="pokemon/img/{{user.name.toLowerCase()}}.jpg" class="img-circle">
                 <div class="col-12">
-                    <h2>{{user.types[0]}}</h2>
+                    <h2>{{user.types[0].charAt(0).toUpperCase() + user.types[0].slice(1)}}</h2>
                 </div>
             </div>
         </div>
