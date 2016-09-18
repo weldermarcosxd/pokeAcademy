@@ -12,5 +12,5 @@ do
 
    echo $((count+1))
 
-   wget $b -P /var/www/html/pokeAcademy/img
+   wget $b -P ./img
 done

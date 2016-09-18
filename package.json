@@ -1,0 +1,24 @@
+{
+  "name": "poke-academy",
+  "version": "1.0.0",
+  "description": "No Description to provide",
+  "main": "feed.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weldermarcosxd/pokeAcademy.git"
+  },
+  "author": "@umemaro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weldermarcosxd/pokeAcademy/issues"
+  },
+  "homepage": "https://github.com/weldermarcosxd/pokeAcademy#readme"
+}
