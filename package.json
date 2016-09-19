@@ -5,7 +5,8 @@
   "main": "feed.js",
   "dependencies": {
     "express": "^4.14.0",
-    "mongoose": "^4.6.0"
+    "mongoose": "^4.6.0",
+    "request": "^2.75.0"
   },
   "devDependencies": {},
   "scripts": {

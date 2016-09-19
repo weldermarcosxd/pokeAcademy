@@ -6,20 +6,7 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-//var request = require('request');
-// request({
-//     url: 'http://www.cedynamix.fr/wp-content/uploads/Tux/Tux-G2.png',
-//     encoding: 'binary'
-// }, function(error, response, body) {
-//     if (!error && response.statusCode === 200) {
-//         body = new Buffer(body, 'binary');
-//
-//         // Here "body" can be affected to the "a.img.data"
-//         // var a = new A;
-//         // a.img.data = body;
-//         // ....
-//     }
-// });
+var request = require('request');
 
 // img path
 var pokemonsAdds = JSON.parse(fs.readFileSync('data.json', 'utf8'));
@@ -37,6 +24,7 @@ var schema = new Schema({
     height: Number,
     hp: Number,
     speed: Number,
+    created_at: String,
     types: [String],
     img: {
         data: Buffer,
@@ -60,6 +48,8 @@ mongoose.connection.on('open', function () {
 
     console.log('feeding database...');
 
+    var i = 0;
+
     pokemonsAdds.forEach(poke => {
       var pokemon = new Pokemon;
 
@@ -68,13 +58,27 @@ mongoose.connection.on('open', function () {
       pokemon.defense = poke.defense;
       pokemon.hp = poke.hp;
       pokemon.speed = poke.speed;
-      pokemon.created_at = new Date();
+      pokemon.created_at = Date();
       pokemon.types = poke.types;
-      //pokemon.img.data: poke.
-      //pokemon.contentType: poke.
 
-      pokemon.save(function (err, pokemon) {
-        if (err) throw err;
+      request({
+          url: 'https://img.pokemondb.net/artwork/' + poke.name.toLowerCase() + '.jpg',
+          encoding: 'binary'
+      }, function(error, response, body) {
+
+          if (!error && response.statusCode === 200) {
+
+              body = new Buffer(body, 'binary').toString('base64');
+
+              pokemon.img.data = body;
+              pokemon.img.contentType = 'img/jpg';
+
+              pokemon.save(function (err, pokemon) {
+                if (err) throw err;
+
+                console.log(i++);
+              });
+          }
       });
     });
 
@@ -106,6 +110,5 @@ mongoose.connection.on('open', function () {
     process.on('SIGINT', function () {
       server.close();
     });
-
   });
 });
