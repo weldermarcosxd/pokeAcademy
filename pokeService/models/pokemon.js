@@ -11,7 +11,11 @@ var pokemonSchema = new mongoose.Schema({
     hp:Number,
     name:String,
     speed:Number,
-    types:[String]
+    types:[String],
+    img: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
 // Return model
