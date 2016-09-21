@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 //mongo lab internal variable
-var mongoUrl = process.env.MONGOLAB_URI;
+var mongoUrl = process.env.OMEGA;
 
 // MongoDB
 mongoose.connect(mongoUrl, function (error) {

@@ -4,14 +4,14 @@ var mongoose = restful.mongoose;
 
 // Schema
 var pokemonSchema = new mongoose.Schema({
-    attack:String,
-    created:Date,
-    defense:Number,
-    height:Number,
-    hp:Number,
-    name:String,
-    speed:Number,
-    types:[String],
+    name: String,
+    attack: Number,
+    defense: Number,
+    height: Number,
+    hp: Number,
+    speed: Number,
+    created_at: String,
+    types: [String],
     img: {
         data: Buffer,
         contentType: String
